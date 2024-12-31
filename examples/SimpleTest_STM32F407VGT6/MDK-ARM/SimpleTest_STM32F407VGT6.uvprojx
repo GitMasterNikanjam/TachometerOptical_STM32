@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F407xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;..\..\..\libraries\TimerControl_STM32</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;..\..\..\libraries\TimerControl_STM32;..\..\..\..\TachometerOptical_STM32</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -507,6 +507,16 @@
               <FileName>TimerControl.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\..\..\libraries\TimerControl_STM32\TimerControl.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Libraries/TachometerOptical</GroupName>
+          <Files>
+            <File>
+              <FileName>TachometerOptical.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\..\TachometerOptical.cpp</FilePath>
             </File>
           </Files>
         </Group>

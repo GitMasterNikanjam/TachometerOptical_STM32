@@ -21,7 +21,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "TimerControl.h"
+#include "TachometerOptical.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -43,7 +44,8 @@
 TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
-
+TimerControl timer(&htim2);
+TachometerOptical RPM1;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -51,7 +53,21 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_TIM2_Init(void);
 /* USER CODE BEGIN PFP */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+  if(GPIO_Pin == GPIO_PIN_4)
+  {
+    RPM1.EXTI_Callback();
+  }
+  else if(GPIO_Pin == GPIO_PIN_5)
+  {
 
+  }
+  else if(GPIO_Pin == GPIO_PIN_7)
+  {
+
+  }
+}
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -90,7 +106,16 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
+  timer.setClockFrequency(84000000);
+  timer.init();
+  timer.start();
 
+  TachometerOptical::setTimerControl(&timer);
+  RPM1.parameters.CHANNEL_NUM = 1;
+  RPM1.parameters.GPIO_PORT = GPIOA;
+  RPM1.parameters.GPIO_PIN = GPIO_PIN_4;
+  RPM1.init();
+  
   /* USER CODE END 2 */
 
   /* Infinite loop */
